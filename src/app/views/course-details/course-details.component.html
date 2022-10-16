@@ -1,0 +1,3 @@
+<ng-container *ngIf="courseFacade.$course | async as course">
+  <app-course-details-card [course]="course"></app-course-details-card>
+</ng-container>

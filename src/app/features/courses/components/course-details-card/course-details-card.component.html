@@ -1,0 +1,12 @@
+<ng-container *ngIf="course">
+  <section class="card">
+    <header>
+      <h3>Course</h3>&nbsp;
+      <em>{{course.title}}</em>
+    </header>
+    <hr>
+    <div class="details">
+      <pre>{{ course | json }}</pre>
+    </div>
+  </section>
+</ng-container>

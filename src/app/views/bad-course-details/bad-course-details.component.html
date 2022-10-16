@@ -1,0 +1,41 @@
+<ng-container *ngIf="course">
+  <header>
+    ❌ Bad example
+
+    <pre>
+      >> WRONG DEPENDENCY
+      // facade's usually provides simpler API than regular http request services
+
+      private _courseService: CourseRepository // can be replaced with _courseFacade: CourseFacade
+
+
+      >>>> WITHOUT FACADE (we can see this pattern very often)
+      this._route.paramMap.subscribe(paramMap => {{
+            const courseId = Number(paramMap.get('courseId'));
+
+            this._courseService.findOne(courseId).subscribe(res => {
+              const { status, data } = res;
+              if (data) {
+                this.course = data;
+              }
+            })
+          });
+
+
+      >>>> WITH FACADE (without saving this.course inside component)
+      this._route.paramMap.pipe(
+        switchMap(paramMap => this.courseFacade.findOne(Number(paramMap.get('courseId'))))
+      ).subscribe()
+
+
+      >> USAGE
+      // then simply in html
+      div *ngIf="courseFacade.$course | async as course"
+
+      // or in ANY component/service/etc. (* with courseFacade: CourseFacade in constructor)
+      this.courseFacade.$course.subscribe(course => console.log(course))
+    </pre>
+    <hr>
+  </header>
+  <app-course-details-card [course]="course"></app-course-details-card>
+</ng-container>

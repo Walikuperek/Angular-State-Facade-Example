@@ -1,0 +1,12 @@
+<ng-container *ngIf="publisherFacade.$publisherId | async as publisherId">
+  <section class="publisher">
+    <h3>PublisherID</h3>
+    {{ publisherId }}
+  </section>
+</ng-container>
+
+<ng-container *ngIf="publisherFacade.$publisherCourses | async as courses">
+  <section class="list">
+    <app-course-list [courses]="courses"></app-course-list>
+  </section>
+</ng-container>

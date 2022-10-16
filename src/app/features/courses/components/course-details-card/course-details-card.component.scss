@@ -1,0 +1,15 @@
+.card {
+  background: #333333;
+  color: #c2c3c4;
+  border-radius: 0.5em;
+  padding: 1rem;
+
+  header {
+    display: flex;
+    align-items: center;
+  }
+
+  .details {
+    padding-top: 0.5rem;
+  }
+}
